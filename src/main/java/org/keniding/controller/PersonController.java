@@ -24,4 +24,17 @@ public class PersonController {
         person.setBirthDate(new Date());
         return person;
     }
+
+    @GET
+    @Path("/persona2")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Person getPerson2() {
+        person.setName("Juan");
+        person.setLastName("iding");
+        person.setAge(20);
+        person.setHeight(1.70);
+        person.setWeight(60.0);
+        person.setBirthDate(new Date());
+        return person;
+    }
 }
