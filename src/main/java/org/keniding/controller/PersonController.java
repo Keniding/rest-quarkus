@@ -1,6 +1,7 @@
 package org.keniding.controller;
 
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -85,7 +86,7 @@ public class PersonController {
      * @return Respuesta HTTP con código 201 (Created) y los datos de la persona creada en formato JSON
      */
     @POST
-    public Response createPerson(Person person) {
+    public Response createPerson(@Valid Person person) {
         Person createdPerson = personService.create(person);
         return Response.status(Response.Status.CREATED)
                 .entity(createdPerson)
@@ -109,7 +110,7 @@ public class PersonController {
      */
     @PUT
     @Path("/{id}")
-    public Response updatePerson(@PathParam("id") Long id, Person person) {
+    public Response updatePerson(@PathParam("id") Long id, @Valid Person person) {
         Person updatedPerson = personService.update(id, person);
         return Response.status(Response.Status.OK)
                 .entity(updatedPerson)
